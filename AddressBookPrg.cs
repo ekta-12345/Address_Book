@@ -5,7 +5,6 @@ namespace AddressBook
 {
     class AddressBookPrg
     {
-         
         EditContact edit = new EditContact();
         static Dictionary<String, AddressBookPrg> addressBookDictionary = new Dictionary<string, AddressBookPrg>(); //create Dictionary
         static void Main(string[] args) //Main method
@@ -56,7 +55,7 @@ namespace AddressBook
                         bool loop2 = true;
                         Console.WriteLine("**** Welcome To Address Book System ****");
                         int i = 0;
-                        
+                        // Edit edit = new Edit(); //Create object Edit class
                         while (loop2)
                         {
                             Console.WriteLine("\n1. Add New Person      ");
@@ -103,10 +102,7 @@ namespace AddressBook
                         }
                         break;
                     case 3:
-
-                        Console.Write("Enter City Name To Search Records:- ");
-                        String city = Console.ReadLine();
-                        edit.SearchRecord(city); //call Delete record method
+                        edit.SearchRecordCityOrState(); //call Delete record method
                         break;
 
                     default:
@@ -119,3 +115,5 @@ namespace AddressBook
 
     }
 }
+
+    
