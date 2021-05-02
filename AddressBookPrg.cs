@@ -5,7 +5,7 @@ namespace AddressBook
 {
     class AddressBookPrg
     {
-
+         
         EditContact edit = new EditContact();
         static Dictionary<String, AddressBookPrg> addressBookDictionary = new Dictionary<string, AddressBookPrg>(); //create Dictionary
         static void Main(string[] args) //Main method
@@ -27,7 +27,7 @@ namespace AddressBook
                     choice1 = Convert.ToInt32(Console.ReadLine()); //store choice1
                 }
 
-                //UC7
+
                 AddressBookPrg addressBook = new AddressBookPrg(); //Create Object AddressBookMain
                 string addressBookName = null; // addressBookName empty or null
                 switch (choice1)  //switch Case
@@ -40,7 +40,7 @@ namespace AddressBook
 
                         bool isKeyAvailable = false; // true if a key press is available; otherwise, false.
 
-                        foreach (System.Collections.Generic.KeyValuePair<string, AddressBookPrg> keyValue in addressBookDictionary) //Iterating dictionary  displayed
+                        foreach (KeyValuePair<string, AddressBookPrg> keyValue in addressBookDictionary) //Iterating dictionary  displayed
                         {
                             if (keyValue.Key.Equals(addressBookName)) //Check Addressbook name exixt or not
                             {
@@ -56,7 +56,7 @@ namespace AddressBook
                         bool loop2 = true;
                         Console.WriteLine("**** Welcome To Address Book System ****");
                         int i = 0;
-                        // Edit edit = new Edit(); //Create object Edit class
+                        
                         while (loop2)
                         {
                             Console.WriteLine("\n1. Add New Person      ");
@@ -103,7 +103,10 @@ namespace AddressBook
                         }
                         break;
                     case 3:
-                        edit.SearchRecordCityOrState(); //call SearchRecordCityOrState record method
+
+                        Console.Write("Enter City Name To Search Records:- ");
+                        String city = Console.ReadLine();
+                        edit.SearchRecord(city); //call Delete record method
                         break;
 
                     default:
