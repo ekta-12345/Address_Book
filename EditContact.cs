@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Text.RegularExpressions;
+using AddressBook;
 
-namespace AddressBook
-{
-    class EditContact
+namespace Address_Book_System
+{          
+    class EditContact  // Class EditContact
     {
         public static bool PhoneNumberValidation(String phone)
         {
@@ -22,12 +23,7 @@ namespace AddressBook
             return eregex.IsMatch(email);
 
         }
-        public static bool ZipValidation(String zip)  //Zip Method
-        {
-            String ZPattern = "^[0-9]{6}(?:-[0-9]{6})?$";  //Define Zip Code Pattern
-            Regex Zregex = new Regex(ZPattern); //create object of the Regex class (its Regesx predefine class)
-            return Zregex.IsMatch(zip);
-        }
+
 
         PersonDetails person = null;
 
@@ -62,7 +58,8 @@ namespace AddressBook
             state = Console.ReadLine();        //Store input for state
             Console.Write("Enter Zip:- "); //Take input user
             zip = Console.ReadLine();         //Store input for zip
-            
+           
+
             Console.Write("Enter Phone Number:- "); //Take input user
             phone = Console.ReadLine();           //Store input for phone
             while (!PhoneNumberValidation(phone))
@@ -214,7 +211,9 @@ namespace AddressBook
         }
         public void SearchRecordCityOrState()  //SearchRecordCityOrState Record Method
         {
-            // UC8
+            /* UC8:- Ability to search Person in a City or State across the multiple AddressBook
+                     - Search Result can show multiple person in the city or state
+         */
             Console.WriteLine("1.City\n2.State\nEnter Choice:-");
 
             int choice2 = Convert.ToInt32(Console.ReadLine());
@@ -241,6 +240,10 @@ namespace AddressBook
 
                 }
 
+                /* UC10:- Ability to get number of contact persons i.e. count by City or State.
+                          - Search Result will show count by city and by state.
+                */
+                Console.WriteLine($"\nNumber of contact in the City:- {city} are {count}");
             }
             else
             {
@@ -268,4 +271,3 @@ namespace AddressBook
 
     }
 }
-
