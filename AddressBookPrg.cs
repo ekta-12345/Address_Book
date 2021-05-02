@@ -1,31 +1,34 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace AddressBook
 {
     class AddressBookPrg
     {
+
+        EditContact edit = new EditContact();
         static Dictionary<String, AddressBookPrg> addressBookDictionary = new Dictionary<string, AddressBookPrg>(); //create Dictionary
         static void Main(string[] args) //Main method
         {
             bool loop1 = true; //Boolean Value TRue Or False
-
+            EditContact edit = new EditContact(); //Create object Edit class
             while (loop1)  //While loop to adding number of Address book system
             {
                 Console.WriteLine("**** Welcome To Address Book System ****");
-                Console.WriteLine("\n1.Add Address Book System\n2.Show Address Books System Names\n3.Exit "); //Print menu
+                Console.WriteLine("\n1.Add Address Book System\n2.Show Address Books System Names\n3.Search Person in City or State\n4.Exit "); //Print menu
 
                 Console.Write("Enter Your Choice:- "); //Take input
                 int choice1 = Convert.ToInt32(Console.ReadLine()); //take input user and store choice1 veriable
 
-                while (choice1 > 3)//Check input is greater or not
+                while (choice1 > 4)//Check input is greater or not
                 {
                     Console.WriteLine("Plz Enter Valid Option"); //print 
                     Console.Write("Enter Your Choice:-");  //take input
                     choice1 = Convert.ToInt32(Console.ReadLine()); //store choice1
                 }
 
-
-                AddressBookPrg addressBook = new AddressBookPrg(); //Create Object AddressBookPrg
+                //UC7
+                AddressBookPrg addressBook = new AddressBookPrg(); //Create Object AddressBookMain
                 string addressBookName = null; // addressBookName empty or null
                 switch (choice1)  //switch Case
                 {
@@ -37,7 +40,7 @@ namespace AddressBook
 
                         bool isKeyAvailable = false; // true if a key press is available; otherwise, false.
 
-                        foreach (KeyValuePair<string, AddressBookPrg> keyValue in addressBookDictionary) //Iterating dictionary  displayed
+                        foreach (System.Collections.Generic.KeyValuePair<string, AddressBookPrg> keyValue in addressBookDictionary) //Iterating dictionary  displayed
                         {
                             if (keyValue.Key.Equals(addressBookName)) //Check Addressbook name exixt or not
                             {
@@ -53,7 +56,7 @@ namespace AddressBook
                         bool loop2 = true;
                         Console.WriteLine("**** Welcome To Address Book System ****");
                         int i = 0;
-                        EditContact edit = new EditContact(); //Create object Edit class
+                        // Edit edit = new Edit(); //Create object Edit class
                         while (loop2)
                         {
                             Console.WriteLine("\n1. Add New Person      ");
@@ -99,6 +102,9 @@ namespace AddressBook
                             Console.WriteLine("Address Book System Name:-  " + keyValue.Key); //print 
                         }
                         break;
+                    case 3:
+                        edit.SearchRecordCityOrState(); //call SearchRecordCityOrState record method
+                        break;
 
                     default:
                         loop1 = false;
@@ -107,5 +113,6 @@ namespace AddressBook
 
             }
         }
+
     }
 }

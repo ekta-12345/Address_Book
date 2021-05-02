@@ -9,7 +9,6 @@ namespace AddressBook
 {
     class EditContact
     {
- 
         public static bool PhoneNumberValidation(String phone)
         {
             String PPattern = @"^\+?\d{0,2}\-?\d{4,5}\-?\d{5,6}"; //Define Phone Number Pattern
@@ -23,7 +22,7 @@ namespace AddressBook
             return eregex.IsMatch(email);
 
         }
-
+        
 
         PersonDetails person = null;
 
@@ -58,7 +57,7 @@ namespace AddressBook
             state = Console.ReadLine();        //Store input for state
             Console.Write("Enter Zip:- "); //Take input user
             zip = Console.ReadLine();         //Store input for zip
-           
+            
 
             Console.Write("Enter Phone Number:- "); //Take input user
             phone = Console.ReadLine();           //Store input for phone
@@ -145,6 +144,7 @@ namespace AddressBook
                             case 4:
                                 Console.Write("Enter new Zip Code:- "); //Take input user
                                 String zip = Console.ReadLine();        //store zip veriable
+                               
                                 person.ZipCode = zip;                       //store class of person zip data
                                 break;
                             case 6:
@@ -169,7 +169,7 @@ namespace AddressBook
                             Console.WriteLine(t);//print list
                         }
                     }
-                }
+                } //end of edit() method
                 else
                 {
                     Console.WriteLine($"{fname} Name of Record Not Found "); //Print Record not found
