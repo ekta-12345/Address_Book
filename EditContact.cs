@@ -8,7 +8,6 @@ namespace AddressBook
 {
     class EditContact
     {
-
         PersonDetails person = null;
 
         List<PersonDetails> list = new List<PersonDetails>(); //create a list of Person objects
@@ -151,6 +150,6 @@ namespace AddressBook
                 }
             }
         }
-
     }
 }
+        
