@@ -22,7 +22,12 @@ namespace AddressBook
             return eregex.IsMatch(email);
 
         }
-        
+        public static bool ZipValidation(String zip)  //Zip Method
+        {
+            String ZPattern = "^[0-9]{6}(?:-[0-9]{6})?$";  //Define Zip Code Pattern
+            Regex Zregex = new Regex(ZPattern); //create object of the Regex class (its Regesx predefine class)
+            return Zregex.IsMatch(zip);
+        }
 
         PersonDetails person = null;
 
@@ -58,7 +63,6 @@ namespace AddressBook
             Console.Write("Enter Zip:- "); //Take input user
             zip = Console.ReadLine();         //Store input for zip
             
-
             Console.Write("Enter Phone Number:- "); //Take input user
             phone = Console.ReadLine();           //Store input for phone
             while (!PhoneNumberValidation(phone))
@@ -95,7 +99,7 @@ namespace AddressBook
         }
         public void EditRecord(String fname) // EditRecord Method 
         {
-            for (int k = 0; k < list.Count; k++) //Value  present or not
+            for (int k = 0; k < list.Count; k++) // Value  present or not
             {
                 if (list[k].FirstName.Equals(fname))
                 {
@@ -169,7 +173,7 @@ namespace AddressBook
                             Console.WriteLine(t);//print list
                         }
                     }
-                } //end of edit() method
+                } //
                 else
                 {
                     Console.WriteLine($"{fname} Name of Record Not Found "); //Print Record not found
@@ -208,5 +212,60 @@ namespace AddressBook
             }
             return false;
         }
+        public void SearchRecordCityOrState()  //SearchRecordCityOrState Record Method
+        {
+            // UC8
+            Console.WriteLine("1.City\n2.State\nEnter Choice:-");
+
+            int choice2 = Convert.ToInt32(Console.ReadLine());
+            if (choice2 == 1)
+            {
+                int count = 0;
+                Console.WriteLine("Searching contact by City");
+                Console.WriteLine("Enter City Name:-");
+                string city = Console.ReadLine();
+
+                for (int i = 0; i < list.Count; i++)   //Cheack record present or not
+                {
+                    if (list[i].City.Equals(city))  //Cheack list of record and user inpute same or not
+                    {
+                        count++;
+
+                        Console.WriteLine($"Name:- { list[i].FirstName} City:- { list[i].City} "); //UC9 View person name and city
+
+                    }
+                    else
+                    {
+                        Console.WriteLine($"{city} City Name of Record Not Found "); //Print Record not found
+                    }
+
+                }
+
+            }
+            else
+            {
+                int count = 0;
+                Console.WriteLine("Search Record by State");
+                Console.WriteLine("Enter State Name:-");
+                string state = Console.ReadLine();
+
+                for (int i = 0; i < list.Count; i++)   //Cheack record present or not
+                {
+                    if (list[i].State.Equals(state))  //Cheack list of record and user inpute same or not
+                    {
+                        count++;
+                        Console.WriteLine($"Name:- { list[i].FirstName} State:- { list[i].State} "); //UC9 View person name and city
+                    }
+                    else
+                    {
+                        Console.WriteLine($"{state} State Name of Record Not Found "); //Print Record not found
+                    }
+                }
+
+                Console.WriteLine($"\nNumber of contact in the City:- {state} are {count}");
+            }
+        }
+
     }
 }
+
